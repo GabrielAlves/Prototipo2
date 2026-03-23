@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlalchemy>=2.0
+pydantic>=2
+pillow
+mutagen
+PyPDF2
+python-multipart
+boto3
+python-dotenv
+mysql-connector-python

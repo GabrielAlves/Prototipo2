@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerenciador de Arquivos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1>Gerenciador de Arquivos</h1>
+    <p>Envie, visualize e baixe imagens, documentos, áudios e vídeos.</p>
+  </header>
+
+  <main class="container">
+    <section class="upload-section">
+      <div id="dropZone" class="drop-zone">
+        <p>Arraste e solte arquivos aqui</p>
+        <p>ou</p>
+        <label class="button">
+          Selecionar Arquivos
+          <input type="file" id="fileInput" multiple hidden>
+        </label>
+      </div>
+      <div id="progressContainer" class="progress-container"></div>
+    </section>
+
+    <section class="filters">
+      <button class="filter-button active" data-filter="all">Todos</button>
+      <button class="filter-button" data-filter="image">Imagens</button>
+      <button class="filter-button" data-filter="document">Documentos</button>
+      <button class="filter-button" data-filter="audio">Áudios</button>
+      <button class="filter-button" data-filter="video">Vídeos</button>
+    </section>
+
+    <section>
+      <div id="gallery" class="gallery"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© {{ 2025 }} Gerenciador de Arquivos</span>
+  </footer>
+
+  <script>
+    // Fallback seguro caso api_base não seja passado pelo Flask:
+    // const API_BASE = "{{ api_base|default('/api', true) }}";
+    window.API_BASE = "http://127.0.0.1:8000";
+  </script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
