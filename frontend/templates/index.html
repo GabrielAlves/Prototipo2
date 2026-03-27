@@ -44,8 +44,9 @@
 
   <script>
     // Fallback seguro caso api_base não seja passado pelo Flask:
-    // const API_BASE = "{{ api_base|default('/api', true) }}";
-    window.API_BASE = "http://127.0.0.1:8000";
+    const API_BASE = "{{ api_base|default('/api', true) }}";
+    window.API_BASE = API_BASE;
+    //window.API_BASE = "http://127.0.0.1:8000";
   </script>
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>

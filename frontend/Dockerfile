@@ -4,6 +4,8 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+ENV BACKEND_API_BASE 'http://localhost:8001'
+
 COPY . .
 
 EXPOSE 5001
