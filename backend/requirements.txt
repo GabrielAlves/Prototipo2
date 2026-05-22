@@ -1,0 +1,7 @@
+flask
+flask_sqlalchemy
+boto3
+python-dotenv
+pytest
+mysql-connector-python
+flask-cors

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Manager</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Gerenciador Multimídia</h1>
+
+    <div class="upload-box">
+      <input type="file" id="fileInput" multiple>
+      <button id="uploadBtn">Enviar Arquivos</button>
+    </div>
+
+    <hr>
+
+    <h2>Arquivos</h2>
+
+    <div id="gallery" class="gallery"></div>
+
+  </div>
+
+  <script>
+    const API_BASE = "{{ api_base }}";
+    window.API_BASE = API_BASE;
+  </script>
+  <script src="{{url_for('static', filename = 'app.js')}}"</script></script>
+</body>
+</html>
