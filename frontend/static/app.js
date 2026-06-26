@@ -59,42 +59,48 @@ async function loadFiles() {
       card.classList.add("card");
 
       let previewElement;
+      const mediaType = (file.file_type || "").toLowerCase();
       console.log("src:", file.file_url);
 
-      if (file.file_type.startsWith("image/")) {
+      if (mediaType.startsWith("image")) {
 
         previewElement = document.createElement("img");
 
         previewElement.src = file.file_url;
 
-        
-
         previewElement.classList.add("preview");
       }
 
-      else if (file.file_type.startsWith("video/")) {
+      else if (mediaType.startsWith("video")) {
 
         previewElement = document.createElement("video");
 
         previewElement.src = file.file_url;
-
+        previewElement.preload = "metadata";
         previewElement.controls = true;
+        previewElement.muted = false;
+        previewElement.defaultMuted = false;
+        previewElement.volume = 1;
+        previewElement.playsInline = true;
+        previewElement.autoplay = false;
+        previewElement.load();
 
         previewElement.classList.add("preview");
       }
 
-      else if (file.file_type.startsWith("audio/")) {
+      else if (mediaType.startsWith("audio")) {
 
         previewElement = document.createElement("audio");
 
         previewElement.src = file.file_url;
-
+        previewElement.preload = "auto";
         previewElement.controls = true;
+        previewElement.controlsList = "nodownload";
 
-        previewElement.style.width = "100%";
+        previewElement.classList.add("preview", "preview-audio");
       }
 
-      else if (file.file_type === "application/pdf") {
+      else if (mediaType === "application/pdf") {
 
         previewElement = document.createElement("iframe");
 
@@ -142,10 +148,14 @@ async function loadFiles() {
 
       info.classList.add("file-info");
 
+      const createdAt = file.created_at
+        ? new Date(file.created_at).toLocaleString("pt-BR")
+        : "Sem data";
+
       info.innerHTML = `
-        <div class="file-name">
-          ${file.file_name}
-        </div>
+        <div class="file-name">${file.file_name}</div>
+        <div class="file-meta">Tipo: ${file.file_type || "Desconhecido"}</div>
+        <div class="file-meta">Enviado em: ${createdAt}</div>
       `;
 
       const deleteBtn = document.createElement("button");

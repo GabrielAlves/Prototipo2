@@ -29,7 +29,7 @@ def upload():
     unique_name = f"{uuid.uuid4().hex}{file_extension}"
     file.filename = unique_name
 
-    file_type = file.mimetype.split("/")[0]
+    file_type = file.mimetype or "application/octet-stream"
     url = upload_file(file)
 
     db_file = File(file_name = file.filename,

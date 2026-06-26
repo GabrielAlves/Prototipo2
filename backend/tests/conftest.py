@@ -7,7 +7,7 @@ def client():
             "TESTING" : True,
             "API_KEY" : "testkey",
             "STORAGE_MODE" : "local",
-            "SQLALCHEMY_DATABASE_URI" : "sqlite:///:memory:"
+            "SQLALCHEMY_DATABASE_URI" : "sqlite:///:memory:" 
         })
 
     with app.test_client() as client:

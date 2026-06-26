@@ -19,3 +19,11 @@ def test_delete_file(client):
 
     assert delete_response.status_code == 200
     assert delete_response.json["message"] == "File deleted"
+
+def test_delete_nonexistent_file(client):
+    response = client.delete(
+        "/delete/999999",
+        headers={"my-api-key": "testkey"},
+    )
+
+    assert response.status_code == 404

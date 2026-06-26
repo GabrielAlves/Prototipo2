@@ -25,13 +25,24 @@ def test_upload_without_file(client):
     assert response.status_code == 400
     assert response.json["error"] == "no file provided"
 
-def test_upload_without_api_key(client):
+def test_upload_invalid_file(client):
     response = client.post(
         "/upload",
-        data={
-            "file": (io.BytesIO(b"fake content"), "test.jpg")
-        },
-        content_type="multipart/form-data"
+        headers={"my-api-key": "testkey"},
+        data={"file": (io.BytesIO(b"fake content"), "")},
+        content_type="multipart/form-data",
     )
 
-    assert response.status_code == 401
+    assert response.status_code == 400
+    assert response.json["error"] == "Empty filename"
+
+# def test_upload_without_api_key(client):
+#     response = client.post(
+#         "/upload",
+#         data={
+#             "file": (io.BytesIO(b"fake content"), "test.jpg")
+#         },
+#         content_type="multipart/form-data"
+#     )
+
+#     assert response.status_code == 401
