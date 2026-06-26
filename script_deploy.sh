@@ -16,7 +16,8 @@ echo "Aguardando aplicação ficar disponível..."
 TIMEOUT=1000
 ELAPSED=0
 
-until curl -sf http://localhost:8001/health > /dev/null
+# checa se o frontend está disponível. O frontend depende do back e do bd no docker-compose
+until curl -sf http://localhost:5002/ > /dev/null
 do
     sleep 1
     ELAPSED=$((ELAPSED+1))
