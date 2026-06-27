@@ -16,7 +16,7 @@ echo "Aguardando aplicação ficar disponível..."
 TIMEOUT=1000
 ELAPSED=0
 
-# checa se o frontend está disponível. O frontend depende do back e do bd no docker-compose
+# checa se o frontend está disponível. O frontend depende do back e do bd no docker-compose, então fica disponível por último
 until curl -sf http://localhost:5002/ > /dev/null
 do
     sleep 1
@@ -31,6 +31,9 @@ done
 
 END=$(date +%s)
 DEPLOY_TIME=$((END-START))
+
+echo "Executando testes no container backend..."
+docker compose exec -T backend bash -c "PYTHONPATH=/app python -m pytest"
 
 cat >> resultado_deploy.txt << EOF
 status=sucesso
