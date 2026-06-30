@@ -62,3 +62,7 @@ Na raiz do projeto (Prototipo2/) onde está o arquivo docker-compose.yml:
 ou
 
 1. Execute `sudo bash executar_varios_script_tempo.sh` (default: 10 execuções. O número pode ser modificado no for do script `executar_varios_script_tempo.sh`)
+
+## Resultados de tempo de deploy
+
+Os resultados se encontram em `resultado_tempo_deploy.txt`. O arquivo usado para calcular as médias e desvio padrões pode ser acessado [aqui](github.com/GabrielAlves/Prototipos/blob/main/desvio_padrao.py).
