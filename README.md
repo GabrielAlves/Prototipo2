@@ -65,4 +65,4 @@ ou
 
 ## Resultados de tempo de deploy
 
-Os resultados se encontram em `resultado_tempo_deploy.txt`. O arquivo usado para calcular as médias e desvio padrões pode ser acessado [aqui](github.com/GabrielAlves/Prototipos/blob/main/desvio_padrao.py).
+Os resultados se encontram em `resultado_tempo_deploy.txt`. O arquivo usado para calcular as médias e desvio padrões pode ser acessado [aqui](https://github.com/GabrielAlves/Prototipos/blob/main/desvio_padrao.py).
