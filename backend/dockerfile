@@ -8,6 +8,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Essas 2 env vars não alteram os resultados do trabalho.
+# Acidente de debug: eu tinha elas setadas num .env (não é rastreado pelo git) de um git clone específico
+# o .env estava sendo copiado junto com comando COPY acima
+# Não havia percebido até rodar num máquina virtual zerada
+
+ENV STORAGE_MODE 'local'
+
+ENV SQLALCHEMY_DATABASE_URI 'mysql+mysqlconnector://admin:admin@db:3306/db'
+
 EXPOSE 8000
 
 CMD ["python", "run.py"]
